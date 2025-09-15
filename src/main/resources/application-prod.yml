@@ -1,0 +1,28 @@
+# Swagger y H2 apagados
+springdoc:
+  api-docs.enabled: false
+  swagger-ui.enabled: false
+
+spring:
+  h2:
+    console:
+      enabled: false
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driverClassName: org.postgresql.Driver
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-minutes: 120
+
+app:
+  regex:
+    email: ${APP_EMAIL_REGEX:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$}
+    password: ${APP_PASSWORD_REGEX:^(?=.*[A-Z])(?=.*\\d).{8,}$}
+
+logging:
+  level:
+    root: INFO

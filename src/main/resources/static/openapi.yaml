@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Users API
+  version: "1.0.0"
+paths:
+  /api/users:
+    post:
+      summary: Crear usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        "201":
+          description: Creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        "400":
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMsg'
+components:
+  schemas:
+    UserRequest:
+      type: object
+      required: [nombre, email, password]
+      properties:
+        nombre: { type: string }
+        email:  { type: string, format: email }
+        password: { type: string, minLength: 8 }
+    UserResponse:
+      type: object
+      properties:
+        id: { type: string }
+        nombre: { type: string }
+        email: { type: string }
+    ErrorMsg:
+      type: object
+      properties:
+        mensaje: { type: string }

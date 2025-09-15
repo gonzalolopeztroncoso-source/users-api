@@ -1,0 +1,16 @@
+security:
+  jwt:
+    secret: "test-secret-32-chars-min-1234567890"
+    expiration-minutes: 5
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+app:
+  regex:
+    email: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+    password: "^(?=.*[A-Z])(?=.*\\d).{8,}$"
